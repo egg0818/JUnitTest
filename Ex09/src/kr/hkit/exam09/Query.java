@@ -204,8 +204,8 @@ public class Query {
 			con = getConn();
 			ps = con.prepareStatement(sql);
 			ps.setString(1, vo.getBtitle());
-			ps.setString(2, vo.getBtitle());
-			ps.setInt(3, 1);
+			ps.setString(2, vo.getBcontent());
+			ps.setInt(3, vo.getBid());
 			
 			ps.executeUpdate();
 			

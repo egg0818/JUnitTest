@@ -83,7 +83,29 @@ class QueryTest {
 		Assert.assertNull(vo1Db.getBcontent());
 		
 		Assert.assertEquals(0, Query.getAllBoardList().size());
+	}
+	
+	@Test
+	void testC() {
+		List<BoardVO> list = Query.getAllBoardList();
+		int bid = list.get(0).getBid(); // 1
+		BoardVO c = new BoardVO();
+		c.setBid(bid);
+		c.setBtitle("tempTitle1");
+		c.setBcontent("tempCtnt1");
+		Query.boardUpdate(c);
+		BoardVO dbC = Query.getBoardDetail(bid);
+		Assert.assertEquals(c.getBtitle(), dbC.getBtitle());
 		
+		
+		bid = list.get(1).getBid(); // 2
+		BoardVO d = new BoardVO();
+		Query.boardUpdate(d);
+		d.setBtitle("tempTitle2");
+		d.setBcontent("tempCtnt2");
+		d.setBid(bid);
+		BoardVO dbD = Query.getBoardDetail(bid);
+		Assert.assertEquals(d.getBtitle(), dbD.getBtitle());
 		
 	}
 
